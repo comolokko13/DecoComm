@@ -15,7 +15,6 @@ public class HomePage extends AbstractComponent {
     WebDriver driver;
     WebDriverWait wait;
 
-    //encapsulation
     public HomePage(WebDriver driver) {
         super(driver);
         this.driver = driver;
