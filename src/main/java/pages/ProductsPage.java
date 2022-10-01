@@ -10,27 +10,27 @@ public class ProductsPage extends AbstractComponent {
     public ProductsPage(WebDriver driver) { super(driver); }
 
     @FindBy(xpath = "//button[@class='product-form__add-button button button--primary']")
-    private WebElement addToCart;
+    private WebElement addToCartButton;
     
     @FindBy(xpath = "//a[normalize-space()='View cart']")
-    private WebElement viewCart;
+    private WebElement viewCartButton;
 
-    public WebElement setAddToCart(WebElement addToCart){
-        this.addToCart=addToCart;
-        return addToCart;
+    public WebElement setAddToCart(WebElement addToCartButton){
+        this.addToCartButton=addToCartButton;
+        return addToCartButton;
     }
 
-    public WebElement setViewToCart(WebElement viewCart){
-        this.viewCart=viewCart;
-        return viewCart;
+    public WebElement setViewToCart(WebElement viewCartButton){
+        this.viewCartButton=viewCartButton;
+        return viewCartButton;
     }
 
-    public void getAddProductToCart() {
-        addToCart.click();
+    public void clickAddProductToCart() {
+        addToCartButton.click();
     }
 
-    public void getViewProductToCart(){
-        viewCart.click();
+    public void clickViewProductToCart(){
+        viewCartButton.click();
     }
 
 }

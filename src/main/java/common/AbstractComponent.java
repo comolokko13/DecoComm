@@ -3,7 +3,6 @@ package common;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,16 +24,6 @@ public class AbstractComponent {
     public void waitForElementToAppear(By findBy){
         wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
-    }
-
-    public void waitForElementToAppear(WebElement element){
-        wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
-    }
-
-    public void waitForElementToDisappear(WebElement element) throws InterruptedException{
-        wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void implicitlyWait(){

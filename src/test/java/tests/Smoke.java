@@ -3,28 +3,20 @@ package tests;
 import java.util.concurrent.TimeUnit;
 import common.AbstractComponent;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import model.CreditCart;
+import model.Customer;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Smoke {
 
     WebDriver driver;
     WebDriverWait wait;
-    /**
-     * Constructor
-     */
 
     /**
      * Set up browser settings and open the Web Page
@@ -38,11 +30,6 @@ public class Smoke {
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
-    public void tearDown()  {
-        driver.quit();
-    }
-
     @Test
     public void shouldSuccessfullyPurchaseTheItem() throws InterruptedException{
 
@@ -54,38 +41,38 @@ public class Smoke {
         ShippingPage shippingPage = new ShippingPage(driver);
         PaymentPage paymentPage = new PaymentPage(driver);
 
-        homePage.goTo();
-
-        homePage.getPopUpButtonClose1();
-        homePage.getPopUpButtonClose2();
+        homePage.goToMain_Url();
+        homePage.closeJoinUsPopUpButton();
+        homePage.closeSubscribePopUpButton();
 
         abstractComponent.implicitlyWait();
         abstractComponent.scrollDownPage();
-
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getSelectItem));
 
         homePage.getSelectItem();
-        productsPage.getAddProductToCart();
-        productsPage.getViewProductToCart();
-        cartPage.getGoToCheckout();
+        productsPage.clickAddProductToCart();
+        productsPage.clickViewProductToCart();
+        cartPage.getGoToCheckoutPage();
 
         abstractComponent.implicitlyWait();
-        //abstractComponent.waitForElementToAppear(informationPage.email);
-        informationPage.getLoginApplication("rachelallison578@gmail.com", "United States", "Harry", "Potter", "Amazon", "Test Street 12345", "East", "Atlanta",
-                "Georgia", "30318","123456789");
+        informationPage.getLoginApplication(new Customer("rachelallison578@gmail.com",  "Harry", "Potter", "Amazon", "Test Street 12345", "East", "Atlanta",
+                "30318","123456789"));
+        informationPage.getSelectCountry("United States");
+        informationPage.getSelectState("Georgia");
 
         abstractComponent.scrollDownPage();
         abstractComponent.implicitlyWait();
-        informationPage.getContinueToShipping();
-        abstractComponent.implicitlyWait();
-        shippingPage.getContinueToPayment();
+        informationPage.getContinueToShippingPage();
 
-//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-card-fields='number']")));
-//
-//        paymentPage.getCreditCartPayment("30318789456123", "Harry Potter", "0127", "123");
-//
+        abstractComponent.implicitlyWait();
+        shippingPage.getContinueToPaymentPage();
+
+//        paymentPage.getCreditCartPayment(new CreditCart("30318789456123", "Harry Potter", "0127", "123"));
 //        abstractComponent.scrollDownPage();
-       // paymentPage.getPayNowClick;
-//hello23
+//        paymentPage.getClickPayNowButton;
+    }
+
+    @AfterMethod
+    public void tearDown()  {
+        driver.quit();
     }
 }

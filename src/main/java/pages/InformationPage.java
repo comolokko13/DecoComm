@@ -1,19 +1,18 @@
 package pages;
 
 import common.AbstractComponent;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import model.Customer;
 
 public class InformationPage extends AbstractComponent {
 
     WebDriver driver;
-    Select stateDropdown;
-    Select countryDropdown;
+    Select selectState;
+    Select selectCountry;
     WebDriverWait wait;
 
     public InformationPage(WebDriver driver){ super(driver); }
@@ -22,7 +21,7 @@ public class InformationPage extends AbstractComponent {
     private WebElement userEmail;
 
     @FindBy(xpath = "//select[@id='checkout_shipping_address_country']")
-    private WebElement userDropDownCountry;
+    private WebElement userCountry;
 
     @FindBy(xpath = "//input[@id='checkout_shipping_address_first_name']")
     private WebElement userFirstName ;
@@ -43,7 +42,7 @@ public class InformationPage extends AbstractComponent {
     private WebElement userCity;
 
     @FindBy(xpath = "//select[@id='checkout_shipping_address_province']")
-    private WebElement userDropDownState;
+    private WebElement userState;
 
     @FindBy(xpath = "//input[@id='checkout_shipping_address_zip']")
     private WebElement userZipCode ;
@@ -54,45 +53,34 @@ public class InformationPage extends AbstractComponent {
     @FindBy(xpath = "//button[@id='continue_button']")
     private WebElement continueToShippingButton;
 
-    public WebElement setContinueToShipping(WebElement continueToShippingButton){
+    public WebElement setContinueToShippingPage(WebElement continueToShippingButton){
         this.continueToShippingButton=continueToShippingButton;
         return continueToShippingButton;
     }
 
-//    public String setLoginApplication(String email, String firstName, String lastName, String company, String address1, String address2, String city, String stateDropdown, String zipCode, String phone) {
-//        this.userEmail= email;
-//        userFirstName.sendKeys(firstName);
-//        userLastName.sendKeys(lastName);
-//        userCompany.sendKeys(company);
-//        userAddress1.sendKeys(address1);
-//        userAddress2.sendKeys(address2);
-//        userCity.sendKeys(city);
-//
-//        //Dropdown element gelecek.dropdownu buraya koymak mantikli mi
-//        Select stateDropDown = new Select(userDropDownElement);
-//        stateDropDown.selectByVisibleText(stateDropdown);
-//
-//        userZipCode.sendKeys(zipCode);
-//        userPhone.sendKeys(phone);
-//    }
-
-    public void getLoginApplication(String email, String countryDropdown, String firstName, String lastName, String company, String address1, String address2, String city, String stateDropdown, String zipCode, String phone) {
-        userEmail.sendKeys(email);
-        Select countryDropDown = new Select(userDropDownCountry);
-        countryDropDown.selectByVisibleText(countryDropdown);
-        userFirstName.sendKeys(firstName);
-        userLastName.sendKeys(lastName);
-        userCompany.sendKeys(company);
-        userAddress1.sendKeys(address1);
-        userAddress2.sendKeys(address2);
-        userCity.sendKeys(city);
-        Select stateDropDown = new Select(userDropDownState);
-        stateDropDown.selectByVisibleText(stateDropdown);
-        userZipCode.sendKeys(zipCode);
-        userPhone.sendKeys(phone);
+    public void getSelectCountry(String countrySelect){
+        Select selectCountry = new Select(userCountry);
+        selectCountry.selectByVisibleText(countrySelect);
     }
 
-    public void getContinueToShipping(){
+    public void getSelectState(String stateSelect){
+        Select selectState = new Select(userState);
+        selectState.selectByVisibleText(stateSelect);
+    }
+
+    public void getLoginApplication(Customer customer) {
+        userEmail.sendKeys(customer.getEmail());
+        userFirstName.sendKeys(customer.getFirstName());
+        userLastName.sendKeys(customer.getLastName());
+        userCompany.sendKeys(customer.getCompany());
+        userAddress1.sendKeys(customer.getAddress1());
+        userAddress2.sendKeys(customer.getAddress2());
+        userCity.sendKeys(customer.getCity());
+        userZipCode.sendKeys(customer.getZipCode());
+        userPhone.sendKeys(customer.getPhone());
+    }
+
+    public void getContinueToShippingPage(){
         continueToShippingButton.click();
     }
 

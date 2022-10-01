@@ -14,6 +14,7 @@ public class HomePage extends AbstractComponent {
 
     WebDriver driver;
     WebDriverWait wait;
+    private static final String MAIN_URL = "https://decohubhome.com/";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -22,47 +23,30 @@ public class HomePage extends AbstractComponent {
     }
 
     @FindBy (css = "button[title='Close'][aria-label='Close']")
-    private List<WebElement> popUpButton1;
+    private List<WebElement> joinUsPopUpList;
 
     @FindBy(xpath = "//button[@class='popup-newsletter__close link']")
-    private List<WebElement> popUpButton2;
+    private List<WebElement> subscribePopUpList;
 
-    @FindBy (xpath = "//button[@class='exit-popup__close link']")
-    private List<WebElement> popUpButton3;
-
-//    @FindBy (css = ".product-item__title")
-//    private List<WebElement> livingRoomSets;
-//
     @FindBy (xpath = "//div[@class='product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected']")
     private List<WebElement> livingRoomSets;
 
     private By roomSets = By.cssSelector("//div[@class='product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected']");
-    private By popUp1 = By.cssSelector("button[title='Close'][aria-label='Close']");
-    private By popUp2 = By.xpath("//button[@class='popup-newsletter__close link']");
-    private By popUp3 = By.xpath("//button[@class='exit-popup__close link']");
+    private By joinUsPopUpButton = By.cssSelector("button[title='Close'][aria-label='Close']");
+    private By subscribePopUpButton = By.xpath("//button[@class='popup-newsletter__close link']");
 
-    public void goTo(){
-        driver.get("https://decohubhome.com/");
+    public void goToMain_Url(){
+        driver.get(MAIN_URL);
     }
 
-    public By setRoomSets(By roomSets){
-        this.roomSets=roomSets;
-        return roomSets;
+    public By setCloseJoinUsPopUpButton(By joinUsPopUpButton){
+        this.joinUsPopUpButton=joinUsPopUpButton;
+        return joinUsPopUpButton;
     }
 
-    public By setPopUp1(By popUp1){
-        this.popUp1=popUp1;
-        return popUp1;
-    }
-
-    public By setPopUp2(By popUp2){
-        this.popUp2=popUp2;
-        return popUp2;
-    }
-
-    public By setPopUp3(By popUp3){
-        this.popUp3=popUp3;
-        return popUp3;
+    public By setCloseSubscribePopUpButton(By subscribePopUpButton){
+        this.subscribePopUpButton=subscribePopUpButton;
+        return subscribePopUpButton;
     }
 
     public List<WebElement> setSelectItem(List<WebElement> livingRoomSets){
@@ -70,24 +54,19 @@ public class HomePage extends AbstractComponent {
         return livingRoomSets;
     }
 
-    public List<WebElement> setProductList(){
-        waitForElementToAppear(roomSets);
-        return livingRoomSets;
-    }
+    public void closeJoinUsPopUpButton() {
 
-    public void getPopUpButtonClose1() {
-
-        waitForElementToAppear(popUp1);
-        if(!popUpButton1.isEmpty()){
-            popUpButton1.get(0).click();
+        waitForElementToAppear(joinUsPopUpButton);
+        if(!joinUsPopUpList.isEmpty()){
+            joinUsPopUpList.get(0).click();
         }
     }
 
-    public void getPopUpButtonClose2() {
+    public void closeSubscribePopUpButton() {
 
-        waitForElementToAppear(popUp2);
-        if(!popUpButton2.isEmpty()){
-            popUpButton2.get(0).click();
+        waitForElementToAppear(subscribePopUpButton);
+        if(!subscribePopUpList.isEmpty()){
+            subscribePopUpList.get(0).click();
         }
     }
 

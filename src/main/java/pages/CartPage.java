@@ -10,14 +10,14 @@ public class CartPage extends AbstractComponent {
     public CartPage(WebDriver driver){ super(driver); }
 
     @FindBy (css = "button[name='checkout']")
-    private WebElement checkout;
+    private WebElement checkoutButton;
 
-    public WebElement setGoToCheckout(WebElement checkout){
-        this.checkout=checkout;
-        return checkout;
+    public WebElement setGoToCheckoutPage(WebElement checkoutButton){
+        this.checkoutButton=checkoutButton;
+        return checkoutButton;
     }
 
-    public void getGoToCheckout(){
-        checkout.click();
+    public void getGoToCheckoutPage(){
+        checkoutButton.click();
     }
 }

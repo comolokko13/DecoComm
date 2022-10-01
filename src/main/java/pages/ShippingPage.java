@@ -10,14 +10,14 @@ public class ShippingPage extends AbstractComponent {
     public ShippingPage(WebDriver driver) { super(driver); }
 
     @FindBy(xpath = "//button[@id='continue_button']")
-    private WebElement continueToPaymentButton;
+    private WebElement continueToPaymentPageButton;
 
-    public WebElement setContinueToPayment(WebElement continueToPaymentButton){
-        this.continueToPaymentButton=continueToPaymentButton;
-        return continueToPaymentButton;
+    public WebElement setContinueToPaymentPage(WebElement continueToPaymentPageButton){
+        this.continueToPaymentPageButton=continueToPaymentPageButton;
+        return continueToPaymentPageButton;
     }
 
-    public void getContinueToPayment(){
-        continueToPaymentButton.click();
+    public void getContinueToPaymentPage(){
+        continueToPaymentPageButton.click();
     }
 }
