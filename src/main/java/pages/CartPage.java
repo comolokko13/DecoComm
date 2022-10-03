@@ -12,12 +12,7 @@ public class CartPage extends AbstractComponent {
     @FindBy (css = "button[name='checkout']")
     private WebElement checkoutButton;
 
-    public WebElement setGoToCheckoutPage(WebElement checkoutButton){
-        this.checkoutButton=checkoutButton;
-        return checkoutButton;
-    }
-
-    public void getGoToCheckoutPage(){
+    public void goToCheckoutPage(){
         checkoutButton.click();
     }
 }

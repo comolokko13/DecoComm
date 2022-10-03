@@ -16,7 +16,6 @@ import org.openqa.selenium.WebDriver;
 public class Smoke {
 
     WebDriver driver;
-    WebDriverWait wait;
 
     /**
      * Set up browser settings and open the Web Page
@@ -46,29 +45,30 @@ public class Smoke {
         homePage.closeSubscribePopUpButton();
 
         abstractComponent.implicitlyWait();
-        abstractComponent.scrollDownPage();
+        abstractComponent.scrollDownForLongPage();
 
         homePage.getSelectItem();
+        abstractComponent.scrollDownForShortPage();
         productsPage.clickAddProductToCart();
         productsPage.clickViewProductToCart();
-        cartPage.getGoToCheckoutPage();
+        cartPage.goToCheckoutPage();
 
         abstractComponent.implicitlyWait();
-        informationPage.getLoginApplication(new Customer("rachelallison578@gmail.com",  "Harry", "Potter", "Amazon", "Test Street 12345", "East", "Atlanta",
+        informationPage.fillLoginDetails(new Customer("rachelallison578@gmail.com",  "Harry", "Potter", "Amazon", "Test Street 12345", "East", "Atlanta",
                 "30318","123456789"));
         informationPage.getSelectCountry("United States");
         informationPage.getSelectState("Georgia");
 
-        abstractComponent.scrollDownPage();
+        abstractComponent.scrollDownForLongPage();
         abstractComponent.implicitlyWait();
-        informationPage.getContinueToShippingPage();
+        informationPage.clickContinueToShippingPage();
 
         abstractComponent.implicitlyWait();
-        shippingPage.getContinueToPaymentPage();
+        shippingPage.clickContinueToPaymentPage();
 
-//        paymentPage.getCreditCartPayment(new CreditCart("30318789456123", "Harry Potter", "0127", "123"));
-//        abstractComponent.scrollDownPage();
-//        paymentPage.getClickPayNowButton;
+        paymentPage.getCreditCartPayment(new CreditCart("30318789456123", "Harry Potter", "0127", "123"));
+        abstractComponent.scrollDownForLongPage();
+        paymentPage.clickPayNowButton();
     }
 
     @AfterMethod

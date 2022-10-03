@@ -30,9 +30,15 @@ public class AbstractComponent {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
     }
 
-    public void scrollDownPage(){
+    public void scrollDownForLongPage(){
         for (int i = 0; i < 10; i++) {
-            jse.executeScript("window.scrollBy(0,230)");
+            jse.executeScript("window.scrollBy(0,250)");
+        }
+    }
+
+    public void scrollDownForShortPage(){
+        for (int i = 0; i < 10; i++) {
+            jse.executeScript("window.scrollBy(0,70)");
         }
     }
 }

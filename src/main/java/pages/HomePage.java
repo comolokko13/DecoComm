@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Random;
 
 public class HomePage extends AbstractComponent {
 
     WebDriver driver;
-    WebDriverWait wait;
+
     private static final String MAIN_URL = "https://decohubhome.com/";
 
     public HomePage(WebDriver driver) {
@@ -31,7 +31,6 @@ public class HomePage extends AbstractComponent {
     @FindBy (xpath = "//div[@class='product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected']")
     private List<WebElement> livingRoomSets;
 
-    private By roomSets = By.cssSelector("//div[@class='product-item product-item--vertical 1/4--lap 1/5--desk 1/6--wide is-selected']");
     private By joinUsPopUpButton = By.cssSelector("button[title='Close'][aria-label='Close']");
     private By subscribePopUpButton = By.xpath("//button[@class='popup-newsletter__close link']");
 
@@ -39,38 +38,22 @@ public class HomePage extends AbstractComponent {
         driver.get(MAIN_URL);
     }
 
-    public By setCloseJoinUsPopUpButton(By joinUsPopUpButton){
-        this.joinUsPopUpButton=joinUsPopUpButton;
-        return joinUsPopUpButton;
-    }
-
-    public By setCloseSubscribePopUpButton(By subscribePopUpButton){
-        this.subscribePopUpButton=subscribePopUpButton;
-        return subscribePopUpButton;
-    }
-
-    public List<WebElement> setSelectItem(List<WebElement> livingRoomSets){
-        this.livingRoomSets=livingRoomSets;
-        return livingRoomSets;
-    }
-
     public void closeJoinUsPopUpButton() {
-
         waitForElementToAppear(joinUsPopUpButton);
-        if(!joinUsPopUpList.isEmpty()){
-            joinUsPopUpList.get(0).click();
-        }
+        joinUsPopUpList.get(0).click();
     }
 
     public void closeSubscribePopUpButton() {
-
         waitForElementToAppear(subscribePopUpButton);
-        if(!subscribePopUpList.isEmpty()){
-            subscribePopUpList.get(0).click();
-        }
+        subscribePopUpList.get(0).click();
     }
 
     public void getSelectItem(){
-        livingRoomSets.get(7).click();
+        int maxProducts = livingRoomSets.size();
+        Random random = new Random();
+        int randomProduct = random.nextInt(maxProducts);
+        livingRoomSets.get(randomProduct).click();
     }
+
+
 }

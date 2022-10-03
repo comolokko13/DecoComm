@@ -8,38 +8,31 @@ import org.openqa.selenium.support.FindBy;
 
 public class PaymentPage extends AbstractComponent {
 
-    WebDriver driver;
-
     public PaymentPage(WebDriver driver)  { super(driver); }
 
     @FindBy(xpath = "//div[@data-card-fields='number']")
-    private WebElement userCardNumber;
+    private WebElement userCardNumberTextBox;
 
     @FindBy(xpath = "//div[@data-card-fields='name']")
-    private WebElement userNameOnCard;
+    private WebElement userNameOnCardTextBox;
 
     @FindBy(xpath = "//div[@class='field--half field field--required'][1]")
-    private WebElement userExpirationDate;
+    private WebElement userExpirationDateTextBox;
 
     @FindBy(xpath = "//div[@class='field--half field field--required'][2]")
-    private WebElement userSecurityCode;
+    private WebElement userSecurityCodeTextBox;
 
     @FindBy(xpath = "//button[@id='continue_button']")
     private WebElement payNowButton;
 
     public void getCreditCartPayment(CreditCart creditCart) {
-        userCardNumber.sendKeys(creditCart.getCardNumber());
-        userNameOnCard.sendKeys(creditCart.getNameOnCard());
-        userExpirationDate.sendKeys(creditCart.getExpirationDate());
-        userSecurityCode.sendKeys(creditCart.getSecurityCode());
+        userCardNumberTextBox.sendKeys(creditCart.getCardNumber());
+        userNameOnCardTextBox.sendKeys(creditCart.getNameOnCard());
+        userExpirationDateTextBox.sendKeys(creditCart.getExpirationDate());
+        userSecurityCodeTextBox.sendKeys(creditCart.getSecurityCode());
     }
 
-    public WebElement setClickPayNowButton(WebElement payNowButton){
-        this.payNowButton=payNowButton;
-        return payNowButton;
-    }
-
-    public void getClickPayNowButton(){
+    public void clickPayNowButton(){
         payNowButton.click();
     }
 }

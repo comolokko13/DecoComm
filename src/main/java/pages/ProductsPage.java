@@ -15,16 +15,6 @@ public class ProductsPage extends AbstractComponent {
     @FindBy(xpath = "//a[normalize-space()='View cart']")
     private WebElement viewCartButton;
 
-    public WebElement setAddToCart(WebElement addToCartButton){
-        this.addToCartButton=addToCartButton;
-        return addToCartButton;
-    }
-
-    public WebElement setViewToCart(WebElement viewCartButton){
-        this.viewCartButton=viewCartButton;
-        return viewCartButton;
-    }
-
     public void clickAddProductToCart() {
         addToCartButton.click();
     }
