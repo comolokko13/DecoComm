@@ -1,0 +1,7 @@
+git status
+git diff src...
+git add src ....  / git add .
+git commit -m "note"
+git push origin HEAD
+
+git pull
