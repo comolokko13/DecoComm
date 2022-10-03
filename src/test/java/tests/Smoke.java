@@ -6,7 +6,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import model.CreditCart;
 import model.Customer;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -66,9 +65,9 @@ public class Smoke {
         abstractComponent.implicitlyWait();
         shippingPage.clickContinueToPaymentPage();
 
-        paymentPage.getCreditCartPayment(new CreditCart("30318789456123", "Harry Potter", "0127", "123"));
-        abstractComponent.scrollDownForLongPage();
-        paymentPage.clickPayNowButton();
+//        paymentPage.getCreditCartPayment(new CreditCart("30318789456123", "Harry Potter", "0127", "123"));
+//        abstractComponent.scrollDownForLongPage();
+//        paymentPage.clickPayNowButton();
     }
 
     @AfterMethod

@@ -18,31 +18,16 @@ public class CreditCart {
         return securityCode;
     }
 
-    public void setSecurityCode(String securityCode) {
-        this.securityCode = securityCode;
-    }
-
     public String getCardNumber() {
         return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
     }
 
     public String getNameOnCard() {
         return nameOnCard;
     }
 
-    public void setNameOnCard(String nameOnCard) {
-        this.nameOnCard = nameOnCard;
-    }
-
     public String getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
-    }
 }
